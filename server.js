@@ -14,7 +14,7 @@ server.get("/", (req, res) => {
 		message: "Welcome to our API"
 	})
 })
-server.use('users', usersRouter);
+server.use('/users', usersRouter);
 server.use((err, req, res, next) => {
 	console.log(err)
 	res.status(500).json({

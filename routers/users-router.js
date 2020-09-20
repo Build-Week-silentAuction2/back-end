@@ -5,7 +5,6 @@ const Users = require("../models/users-model")
 const router = require('express').Router();
 
 router.post('/login', async (req, res, next) => {
-  // implement login
   try {
     const { username, password } = req.body
     const user = await Users.findBy({ username }).first()
@@ -18,11 +17,11 @@ router.post('/login', async (req, res, next) => {
 
       }
       else {
-        return res.status(401).json({ message: "You shall not pass!" })
+        return res.status(401).json({ message: "You shall not pass! Password incorrect" })
       }
     }
     else {
-      return res.status(401).json({ message: "You shall not pass!" })
+      return res.status(401).json({ message: "You shall not pass! Could not find User" })
     }
   }
   catch (err) {
@@ -30,4 +29,33 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
+router.post('/register', async (req, res, next) => {
+  try{
+    const { username, password, role_id } = req.body;
+    const user = await Users.findBy({ username }).first()
+    if(user){
+      return res.status(400).json({
+        message: "Username already taken"
+      })
+    }
+    const newUser = await Users.add({
+      role_id,
+      username,
+      password: await bcrypt.hash(password, 14)
+    })
+    res.status(400).json(newUser)
+  }
+  catch(err){
+    next(err)
+  }
+})
+
+router.get("/", async (req, res, next) => {
+  try{
+    res.json(await Users.findAll())
+  }
+  catch(err){
+    next(err)
+  }
+})
 module.exports = router
