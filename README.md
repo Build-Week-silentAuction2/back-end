@@ -35,4 +35,5 @@ Seed
  -- Kirsten
 
 9/20/20 NOTE: 
- -- Image column in Items table needs to be updated to store images
+ -- Image column in Items table needs to be updated to store images - remigrate or new migration
+ -- Items seed file needs to be updated with images
