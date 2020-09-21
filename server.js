@@ -2,6 +2,7 @@ const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
 const usersRouter = require("./routers/users-router")
+const auctionsRouter = require("./routers/auctions-router")
 // import router
 
 const server = express()
@@ -15,6 +16,7 @@ server.get("/", (req, res) => {
 	})
 })
 server.use('/users', usersRouter);
+server.use('/auctions', auctionsRouter);
 server.use((err, req, res, next) => {
 	console.log(err)
 	res.status(500).json({
