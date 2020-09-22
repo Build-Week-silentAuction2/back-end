@@ -1,18 +1,18 @@
 
 exports.up = async function (knex) {
     await knex.schema.createTable("Roles", (table) => {
-        table.increments("id");
+        table.increments();
         table.string("name").notNullable()
     })
 
     await knex.schema.createTable('Users', (table) => {
-        table.increments("id");
+        table.increments();
         table
             .integer("role_id")
             .references("id")
             .inTable("Roles")
             .onDelete("SET NULL")
-            .defaultTo("buyer")
+            .defaultTo(1)
 
         table
             .string("username")
@@ -26,7 +26,7 @@ exports.up = async function (knex) {
     })
 
     await knex.schema.createTable("Auctions", (table) => {
-        table.increments("id")
+        table.increments()
         table
             .integer("user_id")
             .references("id")
@@ -46,7 +46,7 @@ exports.up = async function (knex) {
     })
 
     await knex.schema.createTable("Items", (table) => {
-        table.increments("id")
+        table.increments()
         table
             .string("name")
             .notNullable()
@@ -76,7 +76,7 @@ exports.up = async function (knex) {
     })
 
     await knex.schema.createTable("Bids", (table) => {
-        table.increments("id")
+        table.increments()
         table
             .integer("buyer_user_id")
             .references("id")
