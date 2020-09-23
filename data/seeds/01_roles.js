@@ -1,6 +1,13 @@
 exports.seed = async function (knex) {
-  await knex("Roles").insert([
-    { name: "Buyer" },
-    { name: "Seller" }
-  ])
+  // put this instead
+  return knex("Roles").del().then(function () {
+    return knex("Roles").insert([
+      { name: "Buyer" },
+      { name: "Seller" }
+    ])
+  })
+  // await knex("Roles").insert([
+  //   { name: "Buyer" },
+  //   { name: "Seller" }
+  // ])
 }

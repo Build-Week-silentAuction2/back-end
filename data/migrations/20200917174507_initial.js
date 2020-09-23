@@ -12,7 +12,7 @@ exports.up = async function (knex) {
             .references("id")
             .inTable("Roles")
             .onDelete("SET NULL")
-            .defaultTo("buyer")
+            .defaultTo(1)
 
         table
             .string("username")
