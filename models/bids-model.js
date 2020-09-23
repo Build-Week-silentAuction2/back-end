@@ -15,7 +15,7 @@ function find() {
 
 // get bid by id
 function findById(id) {
-
+    return db("Bids").where("id", id).first()
 }
 
 // git bids by item
@@ -25,7 +25,7 @@ function findByItem(item_id) {
 
 // delete bid
 function remove(id) {
-
+    return db("Bids").where("id", id).del()
 }
 
 // update bid
