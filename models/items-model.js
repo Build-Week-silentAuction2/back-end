@@ -23,14 +23,14 @@ function findById(itemId){
 function findBySeller(sellerId){
     return db("Items as i")
         .join("Users as u", "i.seller_user_id", "u.id")
-        .where(sellerId)
+        .where("u.id", sellerId)
         .select( "i.name", "i.image", "i.description", "i.price" )
 }
 
-function findAuction(auctionId){
+function findByAuction(auctionId){
     return db("Items as i")
-        .join("Auctions as a", "i.seller_user_id", "a.id")
-        .where(auctionId)
+        .join("Auctions as a", "i.auction_id", "a.id")
+        .where("a.id", auctionId)
         .select( "i.name", "i.image", "i.description", "i.price" )
 }
 
@@ -42,5 +42,5 @@ module.exports = {
     findAll,
     findById,
     findBySeller,
-    findAuction,
+    findByAuction,
 }
