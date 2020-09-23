@@ -24,8 +24,8 @@ function findByItem(item_id) {
     return db("Bids as b")
         .join("Items as i", "i.id", "b.item_id")
         .where("i.id", item_id)
-        .select("i.name", "i.price", "i.description", "i.image", "i.seller_id", "i.auction_id", "b.amount", "b.buyer_user_id", "b.time")
-        .orderBy("b.amount", "desc")
+        .select("i.name as item_name", "i.price as item_price", "i.description as item_description", "i.image as item_image", "i.seller_user_id", "i.auction_id", "b.amount as bid_amount", "b.buyer_user_id", "b.time as bid_time")
+        .orderBy("bid_amount", "desc")
 }
 
 // delete bid

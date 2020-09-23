@@ -19,7 +19,8 @@ const router = express.Router()
 // GET /bids
 router.get("/bids", async (req, res, next) => {
     try {
-
+        const bids = await Bids.find()
+        res.json(bids)
     } catch (err) {
         next(err)
     }
@@ -29,7 +30,13 @@ router.get("/bids", async (req, res, next) => {
 // GET /bids/:id
 router.get("/bids/:id", async (req, res, next) => {
     try {
-
+        const bid = await Bids.findById(req.params.id)
+        if (!bid) {
+            res.status(404).json({
+                message: "Bid not found"
+            })
+        }
+        res.json(bid)
     } catch (err) {
         next(err)
     }
@@ -39,7 +46,8 @@ router.get("/bids/:id", async (req, res, next) => {
 // GET /bids/:item_id
 router.get("/items/:item_id/bids", async (req, res, next) => {
     try {
-
+        const bids = await Bids.findByItem(req.params.item_id)
+        res.json(bids)
     } catch (err) {
         next(err)
     }
