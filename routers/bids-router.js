@@ -1,7 +1,10 @@
 // import express
 // import bids model
+const express = require("express")
+const Bids = require("../models/bids-model")
 
 // make router
+const router = express.Router()
 
 // make endpoints
 
@@ -11,6 +14,8 @@
 //  time - time
 //  amount - float
 // }
+
+// Have an endpoint for all bids ()
 
 // GET /bids
 
@@ -25,3 +30,4 @@
 // PUT /bids/:id
 
 // export router
+module.exports = router
