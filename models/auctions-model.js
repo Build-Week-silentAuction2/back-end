@@ -5,7 +5,7 @@ const db = require("../data/dbConfig")
 
 // add auction
 async function insert(auction) {
-    const [id] = await db("Auctions").insert(auction)
+    const [id] = await db("Auctions").insert(auction).returning("id")
     return findById(id)
 }
 
