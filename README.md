@@ -7,7 +7,7 @@ Authentication
 
 USERS Router/models
  * Login -- Done
- * Register -- Gui
+ * Register -- Gui -- Done
 
 
 Auction Router/models
@@ -41,6 +41,8 @@ Seed
 
  ---- END-Points ----
 
+  -- Users --
+
 URL: https://silent-auction-september.herokuapp.com/users
 POST: "/login" 
    Body: { "username": "testuser7", "password": "123" }
@@ -48,6 +50,8 @@ POST: "/register"
   Body: { "role_id": INTEGER, "username": STRING, "password": STRING }
 GET: "/" 
   This gets all users
+
+ -- Auction --
 
 URL: https://silent-auction-september.herokuapp.com/auction
 GET: "/"
@@ -60,3 +64,9 @@ POST: "/"
 DELETE: "/:id"
 PUT: "/:id"
   BODY: { "user_id": INTEGER, "name": STRING, "exp_date": STRING (mm-dd-yyyy) }
+
+ -- Items --
+
+URL: https://silent-auction-september.herokuapp.com/items
+GET: "/"
+  Gets all info about Auction
