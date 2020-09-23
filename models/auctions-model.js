@@ -26,7 +26,8 @@ function remove(id) {
 
 // update auction
 async function update(id, auction) {
-    const response = await db("Auctions").where("id", id).update(auction)
+    const response = await db("Auctions").where("id", id).update(auction, ["id"])
+    console.log(response)
     if (!response) {
         return { auctionsUpdated: response }
     }
