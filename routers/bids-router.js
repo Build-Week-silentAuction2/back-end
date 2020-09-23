@@ -15,19 +15,62 @@ const router = express.Router()
 //  amount - float
 // }
 
-// Have an endpoint for all bids ()
-
+// get all bids - "baseurl/bids"
 // GET /bids
+router.get("/bids", async (req, res, next) => {
+    try {
 
+    } catch (err) {
+        next(err)
+    }
+})
+
+// bid by id - "baseurl/bids/:id"
 // GET /bids/:id
+router.get("/bids/:id", async (req, res, next) => {
+    try {
 
+    } catch (err) {
+        next(err)
+    }
+})
+
+// rest of the bid endpoints - "baseurl/item/item_id/bids
 // GET /bids/:item_id
+router.get("/items/:item_id/bids", async (req, res, next) => {
+    try {
+
+    } catch (err) {
+        next(err)
+    }
+})
 
 // POST /bids
+router.post("/items/:item_id/bids", async (req, res, next) => {
+    try {
+
+    } catch (err) {
+        next(err)
+    }
+})
 
 // DELETE /bids/:id
+router.delete("/items/:item_id/bids/:id", async (req, res, next) => {
+    try {
+
+    } catch (err) {
+        next(err)
+    }
+})
 
 // PUT /bids/:id
+router.delete("/items/:item_id/bids/:id", async (req, res, next) => {
+    try {
+
+    } catch (err) {
+        next(err)
+    }
+})
 
 // export router
 module.exports = router
