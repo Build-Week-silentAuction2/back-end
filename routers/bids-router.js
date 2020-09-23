@@ -5,6 +5,13 @@
 
 // make endpoints
 
+// bid = {
+//  buyer_user_id - int
+//  item_id - int
+//  time - time
+//  amount - float
+// }
+
 // GET /bids
 
 // GET /bids/:id
