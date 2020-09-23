@@ -26,7 +26,7 @@ function getRolebyId(id) {
         .select("r.name")
 }
 function findAll() {
-    return db("users").select("id", "role_id", "username",)
+    return db("Users").select("id", "role_id", "username",)
 }
 
 module.exports = {
