@@ -76,6 +76,10 @@ GET: "/auction/:id"
   Gets items in the auction
 POST: "/"
   Posts new items
+PUT: "/:id"
+  Changes an Item
+DELETE: "/:id"
+  Deletes Item
 
 -- Bids -- 
 URL: https://silent-auction-september.herokuapp.com
