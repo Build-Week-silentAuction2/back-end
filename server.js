@@ -1,15 +1,18 @@
 const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const usersRouter = require("./routers/users-router")
 const auctionsRouter = require("./routers/auctions-router")
 const itemsRouter = require("./routers/items-router")
+const bidsRouter = require("./routers/bids-router")
 // import router
 
 const server = express()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+server.use(cookieParser())
 
 server.get("/", (req, res) => {
 	res.json({
@@ -19,6 +22,7 @@ server.get("/", (req, res) => {
 server.use('/users', usersRouter);
 server.use('/auctions', auctionsRouter);
 server.use('/items', itemsRouter);
+server.use(bidsRouter);
 server.use((err, req, res, next) => {
 	console.log(err)
 	res.status(500).json({

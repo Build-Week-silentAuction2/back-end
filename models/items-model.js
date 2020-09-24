@@ -11,7 +11,7 @@ async function insert(item) {
 function findAll() {
     return db("Items as i")
         .leftJoin("Users as u", "i.seller_user_id", "u.id")
-        .select( "i.id", "i.name", "i.image", "i.description", "i.price", "u.username as SellerName", "i.auction_id as"  )
+        .select( "i.id", "i.name", "i.image", "i.description", "i.price", "u.username as SellerName", "i.auction_id as Auction"  )
 }
 
 function findById(itemId){

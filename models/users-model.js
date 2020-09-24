@@ -7,7 +7,7 @@ async function add(user) {
 
 function findBy(filter) {
     return db("Users")
-        .select("id", "username", "password")
+        .select("id", "username", "password", "role_id")
         .where(filter)
 }
 

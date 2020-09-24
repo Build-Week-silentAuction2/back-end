@@ -1,7 +1,8 @@
 const Items = require("../models/items-model")
 const router = require("express").Router()
+const restrict = require("../middleware/restrict")
 
-router.get('/', async (req, res, next) => {
+router.get('/', restrict(), async (req, res, next) => {
     try{
         const item = await Items.findAll()
         res.json(item)
