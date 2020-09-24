@@ -3,40 +3,38 @@ Unit 4 Repository
 
 
 Authentication
-    -- Use JWT and Tokens -- Done
+    -- Use JWT and Tokens -- DONE
 
 USERS Router/models
- * Login -- Done
- * Register -- Gui -- Done
+ * Login -- DONE
+ * Register -- Gui -- DONE
 
 
 Auction Router/models
  * CRUD Auction
  -- Def: One auction that holds multiple items for buyers to bid on. Only Seller can start an Auction and only 1 auction can be active at a time.
 
--- Kirsten
+-- Kirsten -- DONE
 
 Bids Router/models
  * Create/Delete Bid
 
--- Kirsten
+-- Kirsten 
 
 Items Router/models
  * CRUD items
 
--- Gui
+-- Gui 
 
 Middleware
  * restrict roles
     - only sellers can update auctions
--- Together
+-- Together -- DONE
 
 Seed
- -- Kirsten
+ -- Kirsten -- DONE
 
-9/20/20 NOTE: 
- -- Image column in Items table needs to be updated to store images - remigrate or new migration
- -- Items seed file needs to be updated with images
+
 
 
  ---- END-Points ----
@@ -70,3 +68,27 @@ PUT: "/:id"
 URL: https://silent-auction-september.herokuapp.com/items
 GET: "/"
   Gets all info about Auction
+GET: "/:id" 
+  Gets item by ID
+GET: "/seller/:id"
+  Gets all items under a seller
+GET: "/auction/:id"
+  Gets items in the auction
+POST: "/"
+  Posts new items
+
+-- Bids -- 
+URL: https://silent-auction-september.herokuapp.com
+GET: "/bids"
+  gets all bids
+GET: "/bids/:id"
+  Gets specific bid
+GET: "/items/:item_id/bids"
+  Gets all bids for specific item
+POST: "/items/:item_id/bids"
+  Posts new bid for specific item
+DELETE: "/items/:item_id/bids/:id"
+  Delete specific bid
+PUT: "/items/:item_id/bids/:id"
+  Edits specific bid
+
