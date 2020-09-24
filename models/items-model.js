@@ -35,7 +35,21 @@ function findByAuction(auctionId){
 }
 
 //Modify
+
+async function edit(itemId, newItem){
+    await db("Items")
+        .where("id", itemId)
+        .update(newItem)
+    return await findById(itemId)
+}
+
 //Delete
+
+async function remove(id){
+    return db("Items")
+        .where("id", id)
+        .del()
+}
 
 module.exports = {
     insert,
@@ -43,4 +57,6 @@ module.exports = {
     findById,
     findBySeller,
     findByAuction,
+    edit,
+    remove
 }
