@@ -1,6 +1,7 @@
 const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const usersRouter = require("./routers/users-router")
 const auctionsRouter = require("./routers/auctions-router")
 const itemsRouter = require("./routers/items-router")
@@ -11,6 +12,7 @@ const server = express()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+server.use(cookieParser())
 
 server.get("/", (req, res) => {
 	res.json({

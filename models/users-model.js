@@ -2,12 +2,12 @@ const db = require("../data/dbConfig")
 
 async function add(user) {
     const [id] = await db("Users").insert(user).returning("id")
-    return findById(id)
+    return findById(id);
 }
 
 function findBy(filter) {
     return db("Users")
-        .select("id", "username", "password")
+        .select("id", "username", "password", "role_id")
         .where(filter)
 }
 
