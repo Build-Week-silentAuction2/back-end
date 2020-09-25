@@ -175,7 +175,7 @@ describe("bids integration tests", () => {
 
     it("DELETE /items/:item_id/bids/:id, deletes specific bid", async () => {
         // make get request to /bids
-        const res = await supertest(server).del("/items/3/bids/11")
+        const res = await supertest(server).del("/items/1/bids/1")
 
         // make assertions
         // correct status code?
