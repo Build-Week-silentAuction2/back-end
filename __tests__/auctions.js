@@ -46,6 +46,19 @@ describe("auctions integration tests", () => {
         expect(res.body.name).toBe("First Charity Auction")
     })
 
+    it("GET /auctions/:id, invalid id", async () => {
+        // make get request to /bids
+        const res = await supertest(server).get("/auctions/13")
+
+        // make assertions
+        // correct status code?
+        // correct data type?
+        // correct data?
+        expect(res.statusCode).toBe(404)
+        expect(res.type).toBe("application/json")
+        expect(res.body.message).toBe("Auction not found")
+    })
+
     // it("POST /users/login, set up for following tests", async () => {
     //     // make get request to /bids
     //     const res = await supertest(server)

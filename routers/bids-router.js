@@ -13,6 +13,7 @@ const router = express.Router()
 router.get("/bids", async (req, res, next) => {
     try {
         const bids = await Bids.find()
+        console.log(bids)
         res.json(bids)
     } catch (err) {
         next(err)
