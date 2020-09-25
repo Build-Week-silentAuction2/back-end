@@ -46,6 +46,19 @@ describe("bids integration tests", () => {
         expect(res.body.amount).toBe(320)
     })
 
+    it("GET /bids/:id, gets specific bid, invalid id", async () => {
+        // make get request to /bids
+        const res = await supertest(server).get("/bids/89")
+
+        // make assertions
+        // correct status code?
+        // correct data type?
+        // correct data?
+        expect(res.statusCode).toBe(404)
+        expect(res.type).toBe("application/json")
+        expect(res.body.message).toBe("Bid not found")
+    })
+
     it("GET /items/:item_id/bids, gets all bids for specific item", async () => {
         // make get request to /bids
         const res = await supertest(server).get("/items/2/bids")
@@ -58,6 +71,19 @@ describe("bids integration tests", () => {
         expect(res.type).toBe("application/json")
         expect(res.body).toHaveLength(4)
         expect(res.body[0].bid_amount).toBe(20)
+    })
+
+    it("GET /items/:item_id/bids, gets all bids for specific item, invalid item_id", async () => {
+        // make get request to /bids
+        const res = await supertest(server).get("/items/19/bids")
+
+        // make assertions
+        // correct status code?
+        // correct data type?
+        // correct data?
+        expect(res.statusCode).toBe(404)
+        expect(res.type).toBe("application/json")
+        expect(res.body.message).toBe("Item not found")
     })
 
     it("POST /items/:item_id/bids, adds bid for specific item", async () => {

@@ -40,6 +40,11 @@ router.get("/bids/:id", async (req, res, next) => {
 router.get("/items/:item_id/bids", async (req, res, next) => {
     try {
         const bids = await Bids.findByItem(req.params.item_id)
+        if (bids.length === 0) {
+            return res.status(404).json({
+                message: "Item not found"
+            })
+        }
         res.json(bids)
     } catch (err) {
         next(err)
