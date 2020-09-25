@@ -82,6 +82,7 @@ describe("auctions integration tests", () => {
         // make get request to /bids
         const res = await supertest(server)
             .post("/auctions")
+            .set("Cookie", "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTYwMTA1NTk3Nn0.o5IX0760I2cDX1MPUKvJda549L7s7TP817BnyDklI2o")
             .send({
                 user_id: 2,
                 name: "Super Auction",
@@ -92,28 +93,31 @@ describe("auctions integration tests", () => {
         // correct status code?
         // correct data type?
         // correct data?
-        expect(res.statusCode).toBe(401)
+        expect(res.statusCode).toBe(201)
         expect(res.type).toBe("application/json")
-        // console.log("auction res.body", res.body)
+        expect(res.body.name).toBe("Super Auction")
+        console.log("auction res.body", res.body)
         // console.log("auction res", res)
     })
 
     it("DELETE /auctions/:id", async () => {
         // make get request to /bids
-        const res = await supertest(server).del("/auctions/1")
+        const res = await supertest(server)
+            .del("/auctions/1")
+            .set("Cookie", "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTYwMTA1NTk3Nn0.o5IX0760I2cDX1MPUKvJda549L7s7TP817BnyDklI2o")
 
         // make assertions
         // correct status code?
         // correct data type?
         // correct data?
-        expect(res.statusCode).toBe(401)
-        expect(res.type).toBe("application/json")
+        expect(res.statusCode).toBe(204)
     })
 
     it("PUT /auctions/:id", async () => {
         // make get request to /bids
         const res = await supertest(server)
             .post("/auctions/1")
+            .set("Cookie", "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTYwMTA1NTk3Nn0.o5IX0760I2cDX1MPUKvJda549L7s7TP817BnyDklI2o")
             .send({
                 user_id: 2,
                 name: "Super Charity Auction",
@@ -124,8 +128,8 @@ describe("auctions integration tests", () => {
         // correct status code?
         // correct data type?
         // correct data?
-        expect(res.statusCode).toBe(401)
+        expect(res.statusCode).toBe(200)
         expect(res.type).toBe("application/json")
+        console.log(res.body)
     })
 })
-

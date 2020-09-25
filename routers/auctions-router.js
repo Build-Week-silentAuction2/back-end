@@ -16,7 +16,7 @@ const router = express.Router()
 router.get("/", async (req, res, next) => {
     try {
         const auctions = await Auctions.find()
-        console.log(auctions)
+        //console.log(auctions)
         res.json(auctions)
     } catch (err) {
         next(err)
@@ -27,7 +27,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
     try {
         const auction = await Auctions.findById(req.params.id)
-        console.log(auction)
+        //console.log(auction)
         if (!auction) {
             res.status(404).json({
                 message: "Auction not found"
