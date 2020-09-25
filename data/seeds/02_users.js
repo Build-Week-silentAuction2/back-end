@@ -1,4 +1,4 @@
-const hashedPassword = "$2a$14$qHqCbXUImiBOgXlFNX47wuA7uFWNGNAZutYLvOeye9eotewGlfYV6"
+const hashedPassword = "$2a$14$xz/BltA3hw.xkURJkHrUier3tPyeN636gnkqqoNKW1DO2zoPiMloW"
 
 exports.seed = async function (knex) {
   return knex("Users").del().then(function () {
