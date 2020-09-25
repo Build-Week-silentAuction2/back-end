@@ -13,6 +13,7 @@ const router = express.Router()
 router.get("/bids", async (req, res, next) => {
     try {
         const bids = await Bids.find()
+        //console.log(bids)
         res.json(bids)
     } catch (err) {
         next(err)
@@ -40,6 +41,11 @@ router.get("/bids/:id", async (req, res, next) => {
 router.get("/items/:item_id/bids", async (req, res, next) => {
     try {
         const bids = await Bids.findByItem(req.params.item_id)
+        if (bids.length === 0) {
+            return res.status(404).json({
+                message: "Item not found"
+            })
+        }
         res.json(bids)
     } catch (err) {
         next(err)
@@ -81,6 +87,12 @@ router.post("/items/:item_id/bids", async (req, res, next) => {
 // DELETE /bids/:id
 router.delete("/items/:item_id/bids/:id", async (req, res, next) => {
     try {
+        const bids = await Bids.findByItem(req.params.item_id)
+        if (bids.length === 0) {
+            return res.status(404).json({
+                message: "Item not found"
+            })
+        }
         const bid = await Bids.findById(req.params.id)
         if (!bid) {
             return res.status(404).json({
@@ -105,6 +117,12 @@ router.put("/items/:item_id/bids/:id", async (req, res, next) => {
         if (!req.body || !req.body.buyer_user_id || !req.body.item_id || !req.body.amount) {
             return res.status(400).json({
                 message: "Please provide complete bid information"
+            })
+        }
+        const bids = await Bids.findByItem(req.params.item_id)
+        if (bids.length === 0) {
+            return res.status(404).json({
+                message: "Item not found"
             })
         }
         const bid = await Bids.findById(req.params.id)

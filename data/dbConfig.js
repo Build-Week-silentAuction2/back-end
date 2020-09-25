@@ -6,4 +6,4 @@ require("dotenv").config()
 const environment = process.env.NODE_ENV || "development"
 
 module.exports = knex(knexfile[environment])
-//module.exports = knex(knexfile.production)
+//module.exports = knex(knexfile.development)
