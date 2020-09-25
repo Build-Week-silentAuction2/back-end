@@ -4,6 +4,9 @@ const express = require("express")
 // import auctions model
 const Auctions = require("../models/auctions-model")
 
+// import restrict middleware
+const restrict = require("../middleware/restrict")
+
 // make router
 const router = express.Router()
 
@@ -35,7 +38,7 @@ router.get("/:id", async (req, res, next) => {
 })
 
 // POST /auctions
-router.post("/", async (req, res, next) => {
+router.post("/", restrict(), async (req, res, next) => {
     try {
         if (!req.body || !req.body.user_id || !req.body.name || !req.body.exp_date) {
             return res.status(400).json({
@@ -55,7 +58,7 @@ router.post("/", async (req, res, next) => {
 })
 
 // DELETE /auctions/:id
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", restrict(), async (req, res, next) => {
     try {
         const auction = await Auctions.findById(req.params.id)
         if (!auction) {
@@ -76,7 +79,7 @@ router.delete("/:id", async (req, res, next) => {
 })
 
 // PUT /auctions/:id
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", restrict(), async (req, res, next) => {
     try {
         if (!req.body || !req.body.user_id || !req.body.name || !req.body.exp_date) {
             return res.status(400).json({
