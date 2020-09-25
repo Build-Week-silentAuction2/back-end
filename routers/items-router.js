@@ -59,7 +59,6 @@ router.get("/auction/:id", async(req, res, next) =>{
 router.post("/", restrict(), async(req, res, next) => {
     try{
         if(!req.body || !req.body.name || !req.body.image || !req.body.description || !req.body.price || !req.body.seller_user_id || !req.body.auction_id){
-            console.log(req.body)
             return res.status(400).json({
                 message: "Not all data needed was provided. Make sure you include a name, image url, description, price, seller id and auction id"
             })
@@ -122,7 +121,7 @@ router.delete("/:id", restrict(), async(req, res, next) => {
                 message: "Item could not be deleted"
             })
         }
-        res.status(204).json({message: "You successfully deleted the item"})
+        res.status(204).end()
     }
     catch(err){
         next(err)
