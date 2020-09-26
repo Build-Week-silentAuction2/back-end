@@ -52,7 +52,6 @@ exports.up = async function (knex) {
             .notNullable()
         table
             .string("image")
-            .notNullable()
         table
             .string("description")
             .notNullable()
